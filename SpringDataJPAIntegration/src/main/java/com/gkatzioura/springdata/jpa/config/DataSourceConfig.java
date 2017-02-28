@@ -1,8 +1,8 @@
 package com.gkatzioura.springdata.jpa.config;
 
-import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
 
@@ -15,11 +15,13 @@ public class DataSourceConfig {
     @Bean
     public DataSource createDataSource() throws Exception {
 
-        ComboPooledDataSource ds = new ComboPooledDataSource();
-        ds.setJdbcUrl("jdbc:postgresql://172.17.0.2:5432/postgres?&user=postgres&password=postgres");
-        ds.setDriverClass("org.postgresql.Driver");
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/mls?useUnicode=true&characterEncoding=UTF-8");
+        dataSource.setUsername("mlsuser");
+        dataSource.setPassword("mls123");
 
-        return ds;
+        return dataSource;
     }
 
 }

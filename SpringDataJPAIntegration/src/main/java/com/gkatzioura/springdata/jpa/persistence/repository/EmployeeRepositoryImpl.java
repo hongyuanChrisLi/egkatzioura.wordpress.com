@@ -19,6 +19,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepositoryCustom {
     @PersistenceContext
     EntityManager entityManager;
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<Employee> getFirstNamesLikeAndBonusBigger(String firstName, Double bonusAmount) {
         Query query = entityManager.createNativeQuery("select e.* from spring_data_jpa_example.bonus b, spring_data_jpa_example.employee e\n" +
